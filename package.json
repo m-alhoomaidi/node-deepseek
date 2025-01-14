@@ -1,5 +1,5 @@
 {
-  "name": "@m.alhoomaidi/node-deepseek",
+  "name": "node-deepseek",
   "version": "1.0.0",
   "description": "Node.js client for Deepseek AI API",
   "main": "dist/index.js",
