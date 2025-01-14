@@ -27,5 +27,8 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/m-alhoomaidi/node-deepseek.git"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
