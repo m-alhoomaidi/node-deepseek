@@ -82,3 +82,8 @@ export class DeepseekError extends Error {
     this.status = status;
   }
 }
+
+export type Handler<T = unknown> = (data: T) => void;
+
+export type ChatCompletionHandler = (response: ChatStreamResponse) => void;
+export type ErrorHandler = (error: Error) => void;

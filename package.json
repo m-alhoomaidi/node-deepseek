@@ -1,6 +1,6 @@
 {
   "name": "node-deepseek",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Node.js client for Deepseek AI API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -9,11 +9,23 @@
     "README.md",
     "LICENSE"
   ],
+  "dependencies": {
+    "axios": "^1.7.9",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.0"
+  },
   "scripts": {
-    "build": "tsc",
     "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"examples/**/*.ts\"",
     "prepare": "npm run build",
-    "prepublishOnly": "npm test"
+    "build": "tsc",
+    "prepublishOnly": "npm test && npm run lint",
+    "publish": "npm run build && npm publish"
+   
   },
   "keywords": [
     "deepseek",
@@ -22,13 +34,17 @@
     "api",
     "client"
   ],
-  "author": "Mohammed Al-Homaidi",
+  "author": {
+    "name": "Mohammed Al-Homaidi",
+    "email": "m.alhoomaidi@gmail.com"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/m-alhoomaidi/node-deepseek.git"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

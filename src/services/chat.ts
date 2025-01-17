@@ -1,7 +1,7 @@
 import { DeepseekClient } from './client';
-import { ChatRequest, ChatResponse, ChatStreamResponse } from '../types';
+import { ChatCompletionHandler, ChatRequest, ChatResponse, ErrorHandler } from '../types';
 import { ModelRegistry } from '../models/registry';
-import { ModelConfig, ModelParameters } from '../types/models';
+import { ModelConfig } from '../types/models';
 
 export class ChatService extends DeepseekClient {
   private modelRegistry: ModelRegistry;
@@ -22,25 +22,22 @@ export class ChatService extends DeepseekClient {
     this.client.defaults.baseURL = baseURL;
   }
 
-  // Get available models
   getAvailableModels() {
     return this.modelRegistry.listModels();
   }
 
-  // Get models by family
   getModelsByFamily(family: 'chat' | 'code' | 'instruct') {
     return this.modelRegistry.listModels(family);
   }
 
-  // Register custom model
   registerCustomModel(config: ModelConfig) {
     this.modelRegistry.registerModel(config);
   }
 
   async streamCompletion(
     request: ChatRequest,
-    onData: (chunk: any) => void,
-    onError?: (error: Error) => void,
+    onData: ChatCompletionHandler,
+    onError?: ErrorHandler,
   ): Promise<void> {
     try {
       const response = await this.client.post(

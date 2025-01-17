@@ -54,7 +54,7 @@ describe('ChatService', () => {
   it('should handle streaming completion', async () => {
     const mockStreamResponse = {
       data: {
-        on: (event: string, callback: Function) => {
+        on: (event: string, callback: any) => {
           if (event === 'data') {
             callback(Buffer.from('data: {"choices":[{"delta":{"content":"Hello"}}]}\n\n'));
             callback(Buffer.from('data: [DONE]\n\n'));

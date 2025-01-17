@@ -97,4 +97,44 @@ This project is licensed under the MIT License.
 
 We welcome contributions! Please refer to [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute.
 
+## Development
+
+### Installation
+
+```bash
+npm install
+```
+
+### Scripts
+
+- **Run Tests**
+  ```bash
+  npm test
+  ```
+
+- **Run Tests in Watch Mode**
+  ```bash
+  npm run test:watch
+  ```
+
+- **Run Tests with Coverage**
+  ```bash
+  npm run test:coverage
+  ```
+
+- **Lint Code**
+  ```bash
+  npm run lint
+  ```
+
+- **Fix Linting Issues**
+  ```bash
+  npm run lint:fix
+  ```
+
+- **Format Code**
+  ```bash
+  npm run format
+  ```
+
  
