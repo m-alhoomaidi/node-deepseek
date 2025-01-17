@@ -14,7 +14,7 @@ export class ChatService extends DeepseekClient {
   async createCompletion(request: ChatRequest): Promise<ChatResponse> {
     const baseURL = this.modelRegistry.getModelEndpoint(request.model);
     this.updateBaseURL(baseURL);
-    
+
     return this.post<ChatResponse>('/chat/completions', request);
   }
 
@@ -40,17 +40,21 @@ export class ChatService extends DeepseekClient {
   async streamCompletion(
     request: ChatRequest,
     onData: (chunk: any) => void,
-    onError?: (error: Error) => void
+    onError?: (error: Error) => void,
   ): Promise<void> {
     try {
-      const response = await this.client.post('/chat/completions', 
+      const response = await this.client.post(
+        '/chat/completions',
         { ...request, stream: true },
-        { responseType: 'stream' }
+        { responseType: 'stream' },
       );
 
       response.data.on('data', (chunk: Buffer) => {
         try {
-          const lines = chunk.toString().split('\n').filter(line => line.trim() !== '');
+          const lines = chunk
+            .toString()
+            .split('\n')
+            .filter((line) => line.trim() !== '');
           for (const line of lines) {
             if (line.includes('data: ')) {
               const jsonStr = line.replace('data: ', '');
@@ -67,4 +71,4 @@ export class ChatService extends DeepseekClient {
       onError?.(error as Error);
     }
   }
-} 
+}

@@ -12,11 +12,11 @@ describe('ChatService', () => {
     const mockAxiosInstance = {
       interceptors: {
         response: {
-          use: jest.fn()
-        }
+          use: jest.fn(),
+        },
       },
       defaults: {},
-      post: jest.fn()
+      post: jest.fn(),
     };
 
     mockedAxios.create.mockReturnValue(mockAxiosInstance as any);
@@ -28,13 +28,15 @@ describe('ChatService', () => {
     const mockResponse = {
       data: {
         id: 'test-id',
-        choices: [{
-          message: { role: 'assistant', content: 'Hello!' },
-          finish_reason: 'stop',
-          index: 0
-        }],
-        usage: { prompt_tokens: 10, completion_tokens: 20, total_tokens: 30 }
-      }
+        choices: [
+          {
+            message: { role: 'assistant', content: 'Hello!' },
+            finish_reason: 'stop',
+            index: 0,
+          },
+        ],
+        usage: { prompt_tokens: 10, completion_tokens: 20, total_tokens: 30 },
+      },
     };
 
     const mockAxiosInstance = mockedAxios.create();
@@ -43,7 +45,7 @@ describe('ChatService', () => {
     const response = await chatService.createCompletion({
       messages: [{ role: 'user', content: 'Hello' }],
       model: 'deepseek-chat',
-      max_tokens: 100
+      max_tokens: 100,
     });
 
     expect(response.choices[0].message.content).toBe('Hello!');
@@ -57,8 +59,8 @@ describe('ChatService', () => {
             callback(Buffer.from('data: {"choices":[{"delta":{"content":"Hello"}}]}\n\n'));
             callback(Buffer.from('data: [DONE]\n\n'));
           }
-        }
-      }
+        },
+      },
     };
 
     const mockAxiosInstance = mockedAxios.create();
@@ -68,16 +70,16 @@ describe('ChatService', () => {
     await chatService.streamCompletion(
       {
         messages: [{ role: 'user', content: 'Hello' }],
-        model: 'deepseek-chat'
+        model: 'deepseek-chat',
       },
       (chunk) => {
         if (chunk.choices[0].delta.content) {
           chunks.push(chunk.choices[0].delta.content);
         }
-      }
+      },
     );
 
     expect(chunks.length).toBeGreaterThan(0);
     expect(chunks[0]).toBe('Hello');
   });
-}); 
+});

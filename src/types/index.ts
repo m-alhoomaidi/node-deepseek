@@ -10,7 +10,7 @@ export interface ChatMessage {
   name?: string;
 }
 
-export type DeepseekModel = 
+export type DeepseekModel =
   | 'deepseek-chat'
   | 'deepseek-chat-v2'
   | 'deepseek-chat-v2.5'
@@ -68,7 +68,7 @@ export enum DeepseekErrorCode {
   INVALID_PARAMETERS = 422,
   RATE_LIMIT_REACHED = 429,
   SERVER_ERROR = 500,
-  SERVER_OVERLOADED = 503
+  SERVER_OVERLOADED = 503,
 }
 
 export class DeepseekError extends Error {
@@ -81,4 +81,4 @@ export class DeepseekError extends Error {
     this.code = code;
     this.status = status;
   }
-} 
+}

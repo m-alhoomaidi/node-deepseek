@@ -15,7 +15,7 @@ export class DeepseekClient {
       throw new DeepseekError(
         'API key is required. Please provide a valid Deepseek API key.',
         DeepseekErrorCode.AUTHENTICATION_FAILED,
-        401
+        401,
       );
     }
 
@@ -24,7 +24,7 @@ export class DeepseekClient {
       baseURL: config.baseURL || 'https://api.deepseek.com/v1',
       timeout: config.timeout || 30000,
       headers: {
-        'Authorization': `Bearer ${config.apiKey}`,
+        Authorization: `Bearer ${config.apiKey}`,
         'Content-Type': 'application/json',
       },
     });
@@ -43,7 +43,8 @@ export class DeepseekClient {
             message = 'Authentication failed. Please check your API key.';
             break;
           case 402:
-            message = 'Insufficient balance. Please top up your Deepseek account at https://platform.deepseek.com/billing';
+            message =
+              'Insufficient balance. Please top up your Deepseek account at https://platform.deepseek.com/billing';
             break;
           case 422:
             message = 'Invalid parameters. Please check your request parameters.';
@@ -61,12 +62,8 @@ export class DeepseekClient {
             message = error.response?.data?.message || error.message || 'Unknown error occurred';
         }
 
-        throw new DeepseekError(
-          message,
-          status,
-          status
-        );
-      }
+        throw new DeepseekError(message, status, status);
+      },
     );
   }
 
@@ -79,4 +76,4 @@ export class DeepseekClient {
     const response = await this.client.post<T>(url, data);
     return response.data;
   }
-} 
+}

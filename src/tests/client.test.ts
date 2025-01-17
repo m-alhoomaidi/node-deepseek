@@ -27,4 +27,4 @@ describe('DeepseekClient Error Handling', () => {
       expect((error as DeepseekError).code).toBe(DeepseekErrorCode.AUTHENTICATION_FAILED);
     }
   });
-}); 
+});
