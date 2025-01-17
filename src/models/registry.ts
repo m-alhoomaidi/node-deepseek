@@ -8,13 +8,12 @@ export interface ModelEndpoint {
 const MODEL_ENDPOINTS: ModelEndpoint[] = [
   {
     id: 'deepseek-chat',
-    baseURL: 'https://api.deepseek.com/v1'
+    baseURL: 'https://api.deepseek.com/v1',
   },
   {
     id: 'deepseek-chat-v2.5',
-    baseURL: 'https://api.deepseek.com/v1'
+    baseURL: 'https://api.deepseek.com/v1',
   },
-  
 ];
 
 export class ModelRegistry {
@@ -29,7 +28,7 @@ export class ModelRegistry {
       maxTokens: 32768,
       supportsFunctions: true,
       supportsVision: false,
-      contextWindow: 32768
+      contextWindow: 32768,
     });
 
     this.registerModel({
@@ -39,7 +38,7 @@ export class ModelRegistry {
       maxTokens: 16384,
       supportsFunctions: true,
       supportsVision: false,
-      contextWindow: 16384
+      contextWindow: 16384,
     });
 
     this.registerModel({
@@ -49,7 +48,7 @@ export class ModelRegistry {
       maxTokens: 32768,
       supportsFunctions: true,
       supportsVision: false,
-      contextWindow: 32768
+      contextWindow: 32768,
     });
   }
 
@@ -64,10 +63,8 @@ export class ModelRegistry {
   listModels(family?: ModelFamily): ModelConfig[] {
     const allModels = Array.from(this.models.values());
     if (!family) return allModels;
-    
-    return allModels.filter(model => 
-      model.id.toLowerCase().includes(family.toLowerCase())
-    );
+
+    return allModels.filter((model) => model.id.toLowerCase().includes(family.toLowerCase()));
   }
 
   validateModelParameters(modelId: string, maxTokens?: number): void {
@@ -77,14 +74,12 @@ export class ModelRegistry {
     }
 
     if (maxTokens && maxTokens > model.maxTokens) {
-      throw new Error(
-        `Requested ${maxTokens} tokens exceeds model maximum of ${model.maxTokens}`
-      );
+      throw new Error(`Requested ${maxTokens} tokens exceeds model maximum of ${model.maxTokens}`);
     }
   }
 
   getModelEndpoint(modelId: string): string {
-    const endpoint = MODEL_ENDPOINTS.find(e => e.id === modelId);
+    const endpoint = MODEL_ENDPOINTS.find((e) => e.id === modelId);
     return endpoint?.baseURL || 'https://api.deepseek.com/v1'; // default fallback
   }
-} 
+}

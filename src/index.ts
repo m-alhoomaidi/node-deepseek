@@ -14,7 +14,6 @@ export class Deepseek {
     this.modelRegistry = new ModelRegistry();
   }
 
-  
   getAvailableModels() {
     return this.modelRegistry.listModels();
   }
@@ -30,4 +29,4 @@ export class Deepseek {
 
 export * from './types';
 export * from './types/models';
-export * from './services/chat'; 
+export * from './services/chat';

@@ -17,4 +17,4 @@ export interface ModelParameters {
   presence_penalty?: number;
   frequency_penalty?: number;
   stop?: string[];
-} 
+}
