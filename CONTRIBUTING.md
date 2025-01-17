@@ -1,66 +1,46 @@
-# Contributing to Deepseek Node.js Client
+# Contributing to node-deepseek
 
-We value your contributions and aim to make the process as straightforward and transparent as possible. Follow the steps below to get started.
+We love your input! We want to make contributing to node-deepseek as easy and transparent as possible, whether it's:
 
-## Development Process
+- Reporting a bug
+- Discussing the current state of the code
+- Submitting a fix
+- Proposing new features
+- Becoming a maintainer
 
-1. **Fork the repository** and create a new branch from the `main` branch.
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-3. **Make your changes** and ensure they are thoroughly tested.
-4. Run tests to verify your changes:
-   ```bash
-   npm test
-   ```
-5. **Lint your code** to ensure consistency:
-   ```bash
-   npm run lint
-   ```
+## We Develop with Github
+We use GitHub to host code, to track issues and feature requests, as well as accept pull requests.
+
+## Report bugs using Github's [issue tracker](https://github.com/m-alhoomaidi/node-deepseek/issues)
+We use GitHub issues to track public bugs. Report a bug by [opening a new issue](https://github.com/m-alhoomaidi/node-deepseek/issues/new); it's that easy!
+
+## Write bug reports with detail, background, and sample code
+
+**Great Bug Reports** tend to have:
+
+- A quick summary and/or background
+- Steps to reproduce
+  - Be specific!
+  - Give sample code if you can.
+- What you expected would happen
+- What actually happens
+- Notes (possibly including why you think this might be happening, or stuff you tried that didn't work)
 
 ## Pull Request Process
 
-1. **Update the README.md** with relevant changes, if applicable.
-2. Increment the version number in `package.json` according to [Semantic Versioning (SemVer)](https://semver.org/).
-3. Submit a pull request (PR). A maintainer will review your changes and provide feedback if necessary.
-4. Your PR will be merged once it has been approved by the maintainers.
+1. Fork the repo and create your branch from `main`.
+2. If you've added code that should be tested, add tests.
+3. If you've changed APIs, update the documentation.
+4. Ensure the test suite passes.
+5. Make sure your code lints.
+6. Issue that pull request!
 
-## Code Style Guidelines
-
-To maintain a consistent codebase, adhere to the following standards:
-- **Use TypeScript** throughout the project.
-- Follow the **existing code style**.
-- Include **JSDoc comments** for public APIs.
-- Write **clear and descriptive commit messages**.
-
-## Running Tests
-
-Ensure your changes are tested thoroughly before submitting a pull request:
-
-```bash
-# Run all tests
-npm test
-
-# Run tests in watch mode
-npm run test:watch
-
-# Run tests with coverage
-npm run test:coverage
-```
-
-## Reporting Bugs
-
-Help us improve by reporting issues through GitHub's [issue tracker](issues).
-
-A **great bug report** should include:
-- A brief and descriptive summary.
-- Steps to reproduce the issue.
-- What you expected to happen.
-- What actually happened.
-- Any additional notes or insights.
+## Any contributions you make will be under the MIT Software License
+In short, when you submit code changes, your submissions are understood to be under the same [MIT License](http://choosealicense.com/licenses/mit/) that covers the project. Feel free to contact the maintainers if that's a concern.
 
 ## License
+By contributing, you agree that your contributions will be licensed under its MIT License.
 
-By contributing to this project, you agree that your contributions will be licensed under the **MIT License**.
+## References
+This document was adapted from the open-source contribution guidelines for [Facebook's Draft](https://github.com/facebook/draft-js/blob/a9316a723f9e918afde44dea68b5f9f39b7d9b00/CONTRIBUTING.md).
 

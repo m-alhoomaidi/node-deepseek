@@ -22,8 +22,10 @@
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write \"src/**/*.ts\" \"examples/**/*.ts\"",
     "prepare": "npm run build",
+    "build": "tsc",
     "prepublishOnly": "npm test && npm run lint",
-    "version": "git tag v%s"
+    "publish": "npm run build && npm publish"
+   
   },
   "keywords": [
     "deepseek",
